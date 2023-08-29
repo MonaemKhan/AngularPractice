@@ -1,0 +1,72 @@
+<div *ngIf="!isLoading">
+    Loading .....
+</div>
+<div *ngIf="isLoading">
+
+    <form [formGroup]="postdata" (ngSubmit)="datasubmit()">
+        <div>
+            <label>userId</label>
+            <input formControlName="userId" />
+        </div>
+        <div>
+            <label>title</label>
+            <input formControlName="title" />
+        </div>
+        <div>
+            <label>body</label>
+            <input formControlName="body" />
+        </div>
+        <button>Submit</button>
+    </form>
+
+    <form [formGroup]="postdata" (ngSubmit)="putdata()">
+        <div>
+            <label>userId</label>
+            <input formControlName="userId" />
+        </div>
+        <div>
+            <label>title</label>
+            <input formControlName="title" />
+        </div>
+        <div>
+            <label>body</label>
+            <input formControlName="body" />
+        </div>
+        <button>Update</button>
+    </form>
+
+    <form [formGroup]="postdata" (ngSubmit)="deletedata()">
+        <div>
+            <label>userId</label>
+            <input formControlName="userId" />
+        </div>
+        <div>
+            <label>title</label>
+            <input formControlName="title" />
+        </div>
+        <div>
+            <label>body</label>
+            <input formControlName="body" />
+        </div>
+        <button>Delete</button>
+    </form>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>userId</th>
+                <th>id</th>
+                <th>title</th>
+                <th>body</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let item of getdata">
+            <tr (click)="getinfo(item)">
+                <td>{{item.userId}}</td>
+                <td>{{item.id}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.body}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
