@@ -1,0 +1,141 @@
+<div class="ps-5 pe-5 ms-5 me-5">
+    <h2 class="text-center">Requisition</h2>
+    <hr>
+    <p>
+        <strong>Requisition by</strong>: M.A. Monaem Khan
+    </p>
+    <p><strong>Requisition Email</strong>: khanmonaem07@gmail.com</p>
+    <p><strong>Designation</strong>: Executive Member</p>
+    <p><strong>Company Name</strong>: US Software Ltd.</p>
+    <p><strong>Unit</strong>: IT</p>
+    <p><strong>Requisition Date</strong>: {{date}}</p>
+    <hr>
+</div>
+
+<div class="d-flex justify-content-center">
+    <div class="card p-4">
+        <div class="form-floating mb-3">
+            <select class="form-select w-25" id="floatingSelect" aria-label="Floating label select example"
+                (change)="catagoryChange()" [(ngModel)]="catagoty_name">
+                <option value="" disabled>Catagory</option>
+                <option *ngFor="let item of selected_Catagoty" value="{{item}}">{{item}}</option>
+            </select>
+            <label for="floatingSelect">Select A Catagory</label>
+        </div>
+
+        <div>
+            <p><strong>Item Catagory</strong>: {{catagoty_name}}</p>
+            <table class="table table-hover mt-3">
+                <thead>
+                    <tr>
+                        <th class="tableheader">Item Name</th>
+                        <th class="tableheader">Requried(QTY)</th>
+                        <th class="tableheader">Remark</th>
+                        <th class="tableheader">Delete</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let item of Product_requisition">
+                    <tr>
+                        <td>{{item.Product_Select}}</td>
+                        <td>{{item.Quentity}}</td>
+                        <td>{{item.Remarks}}</td>
+                        <td>
+                            <button class="fs-5 text-center btn text-center" (click)="DeleteProduct(item)"><i
+                                    class="bi bi-archive"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+        <div>
+            <form [formGroup]="form_product_purches" (ngSubmit)="DataSubmit()">
+                <div class="d-flex">
+                    <div class="form-floating formgroup">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
+                            formControlName="Product_Select" (change)="ProductChange()">
+                            <option value="" disabled>Item</option>
+                            <option *ngFor="let item of selected_product" value="{{item}}">{{item}}</option>
+                        </select>
+                        <label for="floatingSelect">Select A Product</label>
+                    </div>
+
+                    <div class=" formgroup d-flex justify-content-center pt-3">
+                        <input type="number" class="form-control" formControlName="Quentity" style="width: 40%;">
+                        <span class="fs-4 pt-1 ps-3">{{masurement}}</span>
+                    </div>
+
+                    <div class=" formgroup">
+                        <input type="text" formControlName="Remarks" class="form-control" placeholder="Remarks" style="height: 80%;">
+                    </div>
+                    <div class=" formgroup d-flex justify-content-center p-3">
+                        <button class="btn btn-info">Add</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="mt-3 d-flex justify-content-end me-5">
+            <button class="btn btn-outline-primary fs-4" (click)="ClaearRequisation()">Clear Requisation</button>
+        </div>
+    </div>
+    <div class="error-class" *ngIf="isError">
+        <div class="d-flex justify-content-end">
+            <button class="btn" (click)="stopError()">X</button>
+        </div>
+        <div class="ms-3 me-3 mb-4">
+            {{Message}}
+        </div>
+        <div class="errorclassdiv">
+
+        </div>
+    </div>
+</div>
+
+<div class="mt-4 d-flex justify-content-center mb-4">
+    <button class="btn btn-outline-primary fs-4 ms-3" (click)="Bill()">Proceed To Bill</button>
+</div>
+
+<div class="d-flex justify-content-center text-warp">
+    <table class="table table-hover mt-3 mb-5 w-75 bill-table">
+        <thead>
+            <tr>
+                <th colspan="6" style="text-align:left;">
+                    <h3 class="text-center">Requisition</h3>
+                    <hr>
+                    <p>
+                        <strong>Requisition by</strong>: M.A. Monaem Khan
+                    </p>
+                    <p><strong>Requisition Email</strong>: khanmonaem07@gmail.com</p>
+                    <p><strong>Designation</strong>: Executive Member</p>
+                    <p><strong>Company Name</strong>: US Software Ltd.</p>
+                    <p><strong>Unit</strong>: IT</p>
+                    <p><strong>Requisition Date</strong>: {{date}}</p>
+                </th>
+            </tr>
+            <tr>
+                <th class="tableheader">Product</th>
+                <th class="tableheader">Catagoty</th>
+                <th class="tableheader">Quentity</th>
+                <th class="tableheader">Price of 1 item</th>
+                <th class="tableheader">Total Price</th>
+                <th class="tableheader">Delete</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let item of billing">
+            <tr>
+                <td>{{item.Product}}</td>
+                <td>{{item.Catagoty}}</td>
+                <td>{{item.Ouentity}}</td>
+                <td>{{item.Actual_Price}}</td>
+                <td>{{item.Total_price}}</td>
+                <td>
+                    <button class="fs-5 text-center btn text-center" (click)="Deletebill(item)"><i
+                            class="bi bi-archive"></i></button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
