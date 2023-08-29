@@ -1,0 +1,15 @@
+<div class="fs-3 ms-5">
+    <p>parent works!</p>
+    <input type="text" [(ngModel)]="fname" /> <br><br>
+    <input type="text" [(ngModel)]="lname"> <br> <br>
+    <button (click)="OnSubmit()">Add</button>
+    <div *ngIf="isShow">
+        <app-child FullName={{fullname}} (newAdd)="AddtoParent($event)"></app-child>
+        <div>
+            {{data|json}}
+        </div>
+    </div>
+
+
+
+</div>
