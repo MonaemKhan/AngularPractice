@@ -1,0 +1,81 @@
+<table class="table fs-3">
+    <thead>
+        <tr>
+            <th>Question</th>
+            <th>Option1</th>
+            <th>Option2</th>
+            <th>Option3</th>
+            <th>Option4</th>
+            <th>Right_Answer</th>
+            <th>Mark</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let item of All_Question">
+        <tr>
+            <td>{{item.Question}}</td>
+            <td>{{item.Option1}}</td>
+            <td>{{item.Option2}}</td>
+            <td>{{item.Option3}}</td>
+            <td>{{item.Option4}}</td>
+            <td>{{item.Right_Answer}}</td>
+            <td>{{item.Mark}}</td>
+            <td>
+                <button class="btn btn-primary ms-3" (click)="EditItem(item)">Edit</button>
+                <button class="btn btn-danger">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="d-flex justify-content-end ">
+    <button class="btn btn-primary ms-3 fs-4" (click)="PostData()">Save All</button>
+</div>
+
+<div>
+    <form [formGroup]="question" class="fs-3 mb-5">
+        <div class="w-75">
+            <label class="form-label text-success" style="width: fit-content;">Question</label>
+            <input type="text" class="form-control me-3" formControlName="Question">
+        </div>
+
+        <div class="d-flex w-75">
+            <div class="w-25 me-3">
+                <label class="form-label" style="width: fit-content;">Option-01</label>
+                <input type="text" class="form-control me-3" formControlName="Option1">
+            </div>
+            <div class="w-25 me-3">
+                <label class="form-label" style="width: fit-content;">Option-02</label>
+                <input type="text" class="form-control me-3" formControlName="Option2">
+            </div>
+            <div class="w-25 me-3">
+                <label class="form-label" style="width: fit-content;">Oprion-03</label>
+                <input type="text" class="form-control me-3" formControlName="Option3">
+            </div>
+            <div class="w-25">
+                <label class="form-label" style="width: fit-content;">Option-04</label>
+                <input type="text" class="form-control me-3" formControlName="Option4">
+            </div>
+        </div>
+
+        <div class="d-flex w-75">
+            <div class="w-50 me-3">
+                <label class="form-label" style="width: fit-content;">Right Answer</label>
+                <select class="form-select" aria-label="Default select example"
+                    formControlName="Right_Answer" (click)="pushToRightAnswer()">
+                    <option *ngFor="let item of RightAnswer" value="{{item}}">{{item}}</option>                    
+                </select>
+            </div>
+            <div class="w-50">
+                <label class="form-label" style="width: fit-content;">Mark</label>
+                <input type="number" class="form-control me-3" formControlName="Mark">
+            </div>
+        </div>
+        <div *ngIf="!isEdit">
+            <button class="btn btn-primary fs-4 mt-3" (click)="questionSubmit()">Add Question</button>
+        </div>
+        <div *ngIf="isEdit">
+            <button class="btn btn-primary fs-4 mt-3" (click)="saveEditData()">Save</button>
+        </div>
+    </form>
+</div>
