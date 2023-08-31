@@ -1,0 +1,31 @@
+<div class="container my-5">
+    <h1>Employee</h1>
+    <h3><a class="btn btn-primary" routerLink="/employees/add">Add New Employee</a></h3>
+    <table class="table table-hover" *ngIf="employee && employee.length>0">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Salary</th>
+                <th>Depertment</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let emp of employee">
+                <td>{{emp.id}}</td>
+                <td>{{emp.name}}</td>
+                <td>{{emp.email}}</td>
+                <td>{{emp.phone}}</td>
+                <td>{{emp.salary}}</td>
+                <td>{{emp.department}}</td>
+                <td>
+                    <a [routerLink]="['/employees','edit',emp.id]" class="btn btn-primary">Edit</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="text-danger" *ngIf="!employee || employee.length<=0">No Employee Found</p>
+</div>
