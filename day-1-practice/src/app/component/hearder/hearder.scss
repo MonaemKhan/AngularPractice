@@ -1,0 +1,28 @@
+.header-style{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: aliceblue;
+    color: cadetblue;
+
+    .header-title{
+      margin-left: 5%;
+    }
+
+    .heaer-route{
+      margin-right: 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 40%;
+
+      a{
+        text-decoration: none;
+        color: black;
+      }
+
+      a:hover{
+        color: blueviolet;
+      }
+    }
+}

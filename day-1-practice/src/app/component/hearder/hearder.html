@@ -1,0 +1,10 @@
+<div class="header-style">
+  <div class="header-title">
+    <h1>{{header_title}}</h1>
+  </div>
+  <div class="heaer-route" >
+    <div *ngFor="let item of route_data">
+      <a [href]="item.path">{{item.name}}</a>
+    </div>
+  </div>
+</div>

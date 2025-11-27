@@ -1,0 +1,41 @@
+import { CommonModule } from '@angular/common';
+import { HeaderService } from '../../services/header/header.service';
+import { routerData } from './../../Class/routeDetails';
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-hearder',
+  standalone:true,
+  templateUrl: './hearder.html',
+  styleUrl: './hearder.scss',
+  imports:[CommonModule]
+})
+export class Hearder implements OnInit{
+
+  header_arr: string[] = ["M", "O", "N", "A", "E", "M"," "];
+  header_title: string = this.header_arr[0];
+  index = 0;
+
+  route_data!: routerData[];
+
+  ngOnInit(): void {
+    console.log("ok");
+    this.typewriteWord();
+    this.route_data = HeaderService.getrouteData();
+  }
+
+  typewriteWord() {
+    let i = 1;
+
+    const interval = setInterval(() => {
+      this.header_title += this.header_arr[i];
+      i++;
+
+      if (i === this.header_arr.length) {
+        i = 1;
+        this.header_title = this.header_arr[0]; // clear the text
+      }
+
+    }, 500); // speed
+  }
+}
