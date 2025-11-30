@@ -5,10 +5,12 @@ import { Hearder } from './component/hearder/hearder';
 import { CommonModule } from '@angular/common';
 import { ModalService } from './services/shared/modal/modal.service';
 import { Modal } from "./component/shared/modal/modal";
+import { ConfirmService } from './services/shared/modal/confirm.service';
+import { Confirm } from "./component/shared/confirm/confirm";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Hearder, CommonModule, Modal],
+  imports: [RouterOutlet, Hearder, CommonModule, Modal, Confirm],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
@@ -20,11 +22,19 @@ export class App implements OnInit {
     type: ModalType.Success
   };
 
-  constructor(private modalService: ModalService) {}
+  confirm = {
+    show: false,
+    message: ''
+  }
+
+  constructor(private modalService: ModalService,
+              private confirmService : ConfirmService
+  ) {}
   protected readonly title = 'day-1-practice';
 
   ngOnInit() {
     this.modalService.modalState.subscribe(m => this.modal = m);
+    this.confirmService.confrimState.subscribe(m=>this.confirm = m)
   }
 
   closeModal() {
