@@ -19,6 +19,9 @@ export class ModalService {
       message: msg,
       type
     });
+    const time = setTimeout(()=>{
+      this.close();
+    },5000);
   }
 
   close() {
