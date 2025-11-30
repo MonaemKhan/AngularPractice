@@ -25,8 +25,6 @@ export class ConfirmService {
   }
 
   confirm(message:string):Promise<boolean>{
-    console.log("Enter Confrim");
-    console.log("mesg " + message);
     return new Promise(reslove=>{
       this.resolver = reslove;
       this.confrimState.next({

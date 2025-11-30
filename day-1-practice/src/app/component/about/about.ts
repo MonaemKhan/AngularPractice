@@ -30,7 +30,6 @@ export class About implements OnInit {
   }
 
   async btnDel(){
-    console.log('delete CLick');
     let res  = await this.Confirm.confirm("Are You Sure");
     console.log(res);
     if(res){
