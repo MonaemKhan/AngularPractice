@@ -1,1 +1,14 @@
-<p>about works!</p>
+<div>
+  <label>Select An Option</label>
+  <select [(ngModel)]="selectValue">
+    <option value="">---select---</option>
+    <option [value]="values.Success">Success</option>
+    <option [value]="values.Error">Error</option>
+    <option [value]="values.Warning">Warning</option>
+  </select>
+</div>
+<div>
+  <label>Message</label>
+  <input type="text" [(ngModel)]="message" />
+</div>
+<button (click)="btnClick()" >Show Modal Click</button>

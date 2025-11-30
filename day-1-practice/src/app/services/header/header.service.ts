@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { routerData } from '../../Class/routeDetails';
 
+@Injectable({ providedIn: 'root' })
+
 export class HeaderService {
-    static routedata:routerData[] = [
+    routedata:routerData[] = [
     {
       path : "",
       name : "Home"
@@ -20,7 +22,7 @@ export class HeaderService {
       name: "Contract"
     }
   ];
-  static getrouteData(){
+  getrouteData(){
     return this.routedata;
   }
 }

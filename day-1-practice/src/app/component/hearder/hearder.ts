@@ -17,11 +17,11 @@ export class Hearder implements OnInit{
   index = 0;
 
   route_data!: routerData[];
-
+  constructor(private headerService : HeaderService){}
   ngOnInit(): void {
     console.log("ok");
     this.typewriteWord();
-    this.route_data = HeaderService.getrouteData();
+    this.route_data = this.headerService.getrouteData();
   }
 
   typewriteWord() {

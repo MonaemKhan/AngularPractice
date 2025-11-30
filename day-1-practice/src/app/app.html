@@ -1,3 +1,11 @@
+<app-modal
+  [title]="modal.title"
+  [message]="modal.message"
+  [show]="modal.show"
+  [type]="modal.type"
+  (closeEvent)="closeModal()"
+>
+</app-modal>
 
 <div>
   <app-hearder/>
