@@ -1,20 +1,19 @@
-import { ModalType } from './Class/modal';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ModalType } from '../../Class/modal';
+import { ModalService } from '../../services/shared/modal/modal.service';
+import { ConfirmService } from '../../services/shared/modal/confirm.service';
 import { RouterOutlet } from '@angular/router';
+import { Hearder } from '../../component/hearder/hearder';
 import { CommonModule } from '@angular/common';
-import { ModalService } from './services/shared/modal/modal.service';
-import { Modal } from "./component/shared/modal/modal";
-import { ConfirmService } from './services/shared/modal/confirm.service';
-import { Confirm } from "./component/shared/confirm/confirm";
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, Modal, Confirm],
-  templateUrl: './app.html',
-  styleUrl: './app.scss'
+  selector: 'app-mainlayout',
+  imports: [RouterOutlet, Hearder, CommonModule],
+  templateUrl: './mainlayout.html',
+  styleUrl: './mainlayout.scss',
 })
-export class App implements OnInit {
-  modal = {
+export class Mainlayout {
+modal = {
     show: false,
     title: '',
     message: '',
