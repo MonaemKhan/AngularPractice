@@ -1,0 +1,11 @@
+<div class="modal-overlay" *ngIf="show">
+  <div class="modal-box success">
+
+    <h3>Confim Dialog</h3>
+    <p>{{ message }}</p>
+
+    <button class="close-btn" (click)="Yes()">Yes</button>
+    <button class="close-btn" (click)="No()">No</button>
+
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="modal-overlay" *ngIf="show">
+  <div class="modal-box" [ngClass]="type">
+
+    <h3>{{ title }}</h3>
+    <p>{{ message }}</p>
+
+    <button class="close-btn" (click)="close()">Close</button>
+
+  </div>
+</div>
