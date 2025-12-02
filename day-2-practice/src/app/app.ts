@@ -29,7 +29,7 @@ export class App implements OnInit {
   constructor(private modalService: ModalService,
               private confirmService : ConfirmService
   ) {}
-  protected readonly title = 'day-1-practice';
+  protected readonly title = 'day-2-practice';
 
   ngOnInit() {
     this.modalService.modalState.subscribe(m => this.modal = m);

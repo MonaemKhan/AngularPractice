@@ -19,7 +19,6 @@ export class Hearder implements OnInit{
   route_data!: routerData[];
   constructor(private headerService : HeaderService){}
   ngOnInit(): void {
-    console.log("ok");
     this.typewriteWord();
     this.route_data = this.headerService.getrouteData();
   }

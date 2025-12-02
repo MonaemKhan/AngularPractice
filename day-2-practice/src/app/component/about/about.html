@@ -16,5 +16,23 @@
 <br/>
 <button (click)="btnDel()">Delete</button>
 <br/>
-{{result}}
+@if(isShow){
+  {{result}}
+}
+@else {
+  No Button CLick
+}
+<br/>
+All Route Data
+<br/>
+
+  @for(route of route_data; track route.name){
+    path : {{route.path}} ---------- name: {{route.name}}
+    <br>
+  }@empty {
+  route Data do not Exits
+  }
+
+<app-childComponent [count]="parentCount" (returnCounter)="parentCount = $event"></app-childComponent>
+<button (click)="btnCounter_click()">CLICK</button>
 
