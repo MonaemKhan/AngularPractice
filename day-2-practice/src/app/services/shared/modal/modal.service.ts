@@ -21,7 +21,7 @@ export class ModalService {
     });
     const time = setTimeout(()=>{
       this.close();
-    },5000);
+    },10000);
   }
 
   close() {

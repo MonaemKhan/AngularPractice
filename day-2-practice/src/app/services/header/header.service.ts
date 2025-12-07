@@ -1,9 +1,11 @@
+import { LoadingService } from './../loading/loading.service';
 import { Injectable } from '@angular/core';
 import { routerData } from '../../Class/routeDetails';
 
 @Injectable({ providedIn: 'root' })
 
 export class HeaderService {
+
     routedata:routerData[] = [
     {
       path : "",

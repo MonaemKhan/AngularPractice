@@ -1,28 +1,34 @@
-.header-style{
+.header-style {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0ff;
+  color: #141414;
+
+  .header-title {
+    margin-left: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+.exploreIcon{
+  cursor: pointer;
+}
+  .heaer-route {
+    margin-right: 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: aliceblue;
-    color: cadetblue;
+    width: 40%;
 
-    .header-title{
-      margin-left: 5%;
+    a {
+      text-decoration: none;
+      color: #141414;
     }
 
-    .heaer-route{
-      margin-right: 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 40%;
-
-      a{
-        text-decoration: none;
-        color: black;
-      }
-
-      a:hover{
-        color: blueviolet;
-      }
+    a:hover {
+      color: white;
     }
+  }
 }

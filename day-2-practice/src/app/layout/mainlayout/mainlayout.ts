@@ -1,41 +1,31 @@
 import { Component } from '@angular/core';
-import { ModalType } from '../../Class/modal';
-import { ModalService } from '../../services/shared/modal/modal.service';
-import { ConfirmService } from '../../services/shared/modal/confirm.service';
 import { RouterOutlet } from '@angular/router';
 import { Hearder } from '../../component/hearder/hearder';
 import { CommonModule } from '@angular/common';
-
+import { Sidebar } from "../../component/sidebar/sidebar";
+import { SidebarService } from '../../services/sidebar/sidebar.service';
 @Component({
   selector: 'app-mainlayout',
-  imports: [RouterOutlet, Hearder, CommonModule],
+  imports: [RouterOutlet, Hearder, CommonModule, Sidebar],
   templateUrl: './mainlayout.html',
   styleUrl: './mainlayout.scss',
 })
 export class Mainlayout {
-modal = {
-    show: false,
-    title: '',
-    message: '',
-    type: ModalType.Success
-  };
 
-  confirm = {
-    show: false,
-    message: ''
+  SidebarShow = {
+    show : false
   }
 
-  constructor(private modalService: ModalService,
-              private confirmService : ConfirmService
+  constructor(
+    private sidebarService : SidebarService
   ) {}
   protected readonly title = 'day-2-practice';
 
   ngOnInit() {
-    this.modalService.modalState.subscribe(m => this.modal = m);
-    this.confirmService.confrimState.subscribe(m=>this.confirm = m)
+    this.sidebarService.sidebarstate.subscribe(m=>this.SidebarShow = m);
   }
 
-  closeModal() {
-    this.modalService.close();
+  hideMenu(){
+    this.sidebarService.action();
   }
 }
