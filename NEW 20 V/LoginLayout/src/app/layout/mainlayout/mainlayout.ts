@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Hearder } from '../../component/hearder/hearder';
 import { CommonModule } from '@angular/common';
-import { Sidebar } from "../../component/sidebar/sidebar";
 import { SidebarService } from '../../services/sidebar/sidebar.service';
+import { Hearder } from '../../component/LayoutComponent/hearder/hearder';
+import { Sidebar } from '../../component/LayoutComponent/sidebar/sidebar';
 @Component({
   selector: 'app-mainlayout',
   imports: [RouterOutlet, Hearder, CommonModule, Sidebar],

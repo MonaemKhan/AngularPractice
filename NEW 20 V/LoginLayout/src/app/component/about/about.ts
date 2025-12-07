@@ -6,7 +6,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ConfirmService } from '../../services/shared/modal/confirm.service';
 import { routerData } from '../../Class/routeDetails';
-import { HeaderService } from '../../services/header/header.service';
 import { ChildComponent } from "../child.component/child.component";
 
 @Component({
@@ -18,44 +17,42 @@ import { ChildComponent } from "../child.component/child.component";
 })
 
 export class About implements OnInit {
-  selectValue:ModalType = ModalType.Success;
-  message:string = "";
+  selectValue: ModalType = ModalType.Success;
+  message: string = "";
   values: any = ModalType;
-  result:string = "";
+  result: string = "";
   isShow: boolean = false;
 
-  parentCount:number = 0;
+  parentCount: number = 0;
 
   route_data!: routerData[];
 
   ngOnInit(): void {
-    this.route_data = this.headerService.getrouteData();
   }
 
-  constructor(private modal : ModalService,
-    private Confirm : ConfirmService,
-    private headerService : HeaderService
-  ) {}
+  constructor(private modal: ModalService,
+    private Confirm: ConfirmService
+  ) { }
 
-  btnClick(){
-    this.modal.open('Modal',this.message,this.selectValue);
+  btnClick() {
+    this.modal.open('Modal', this.message, this.selectValue);
   }
 
-  async btnDel(){
-    let res  = await this.Confirm.confirm("Are You Sure");
+  async btnDel() {
+    let res = await this.Confirm.confirm("Are You Sure");
     this.isShow = true;
-    if(res){
+    if (res) {
       this.result = 'Confirm Delete';
-    }else{
+    } else {
       this.result = 'Not Sure';
     }
   }
 
-  btnCounter_click(){
-    this.parentCount = this.parentCount + 1 ;
+  btnCounter_click() {
+    this.parentCount = this.parentCount + 1;
   }
 
-  onReturnCounter(value:number){
+  onReturnCounter(value: number) {
     this.parentCount = value;
   }
 }

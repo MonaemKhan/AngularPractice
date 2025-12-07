@@ -1,13 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { HeaderService } from '../../services/header/header.service';
-import { routerData } from './../../Class/routeDetails';
 import { Component, OnInit } from '@angular/core';
-import { LoadingService } from '../../services/loading/loading.service';
-import { SidebarService } from '../../services/sidebar/sidebar.service';
+import { routerData } from '../../../Class/routeDetails';
+import { LoadingService } from '../../../services/loading/loading.service';
+import { SidebarService } from '../../../services/sidebar/sidebar.service';
 
 @Component({
   selector: 'app-hearder',
-  standalone: true,
   templateUrl: './hearder.html',
   styleUrl: './hearder.scss',
   imports: [CommonModule]
@@ -21,13 +19,12 @@ export class Hearder implements OnInit {
   index = 0;
 
   route_data!: routerData[];
-  constructor(private headerService: HeaderService,
+  constructor(
     private loadingService: LoadingService,
     private sidebarservice: SidebarService
   ) { }
   ngOnInit(): void {
     this.typewriteWord();
-    this.route_data = this.headerService.getrouteData();
   }
 
   typewriteWord() {

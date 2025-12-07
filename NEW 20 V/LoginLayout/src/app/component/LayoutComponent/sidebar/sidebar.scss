@@ -13,13 +13,19 @@
   /* ANIMATION SETTINGS */
   transform: translateX(-100%);
   opacity: 0;
-  transition: transform 1s ease, opacity 0.35s ease;
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
 }
 
 /* When sidebar is visible */
 .sidebar.open {
   transform: translateX(0);
   opacity: 1;
-  width: fit-content;
+  width: 250px
+}
+
+.routeHeader a{
+  text-decoration: none;
+  color: wheat;
+  cursor: pointer;
 }
 

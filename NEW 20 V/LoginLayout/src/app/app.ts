@@ -35,7 +35,6 @@ export class App implements OnInit {
               private confirmService : ConfirmService,
               private loadingService : LoadingService
   ) {}
-  protected readonly title = 'day-2-practice';
 
   ngOnInit() {
     this.modalService.modalState.subscribe(m => this.modal = m);

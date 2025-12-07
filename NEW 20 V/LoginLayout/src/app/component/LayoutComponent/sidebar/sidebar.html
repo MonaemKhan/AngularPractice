@@ -1,0 +1,10 @@
+<div class="sidebar" [class.open]="show">
+  <div *ngFor="let rout of routeOutlateData">
+    <div *ngIf="rout.routes.length>0" class="routeHeader">
+      <h3>{{rout.name}}</h3>
+      <p *ngFor="let item of rout.routes">
+        <a (click)="navManu(item.path)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.name}}</a>
+      </p>
+    </div>
+  </div>
+</div>
