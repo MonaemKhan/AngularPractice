@@ -1,6 +1,6 @@
+import { ModalType } from './../../../Class/modal';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ModalType } from '../../../Class/modal';
 
 @Injectable({ providedIn: 'root' })
 export class ModalService {
@@ -12,7 +12,20 @@ export class ModalService {
     type: ModalType.Success
   });
 
-  open(title: string, msg: string, type: ModalType) {
+  getTitle(type:ModalType):string{
+    if(ModalType.Success === type){
+      return "Success";
+    }else if(ModalType.Error === type){
+      return "Error";
+    }else if(ModalType.Warning){
+      return "Warning"
+    }else{
+      return "Modal Service"
+    }
+  }
+
+  open(msg: string, type: ModalType) {
+    var title = this.getTitle(type);
     this.modalState.next({
       show: true,
       title,
@@ -21,7 +34,19 @@ export class ModalService {
     });
     const time = setTimeout(()=>{
       this.close();
-    },10000);
+    },6000);
+  }
+
+  openWthTitle(title:string,msg: string, type: ModalType) {
+    this.modalState.next({
+      show: true,
+      title,
+      message: msg,
+      type
+    });
+    const time = setTimeout(()=>{
+      this.close();
+    },6000);
   }
 
   close() {

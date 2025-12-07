@@ -1,14 +1,25 @@
+import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { ModalService } from '../../services/shared/modal/modal.service';
+import { ModalType } from '../../Class/modal';
 
 declare var particlesJS: any;
 
 @Component({
   selector: 'app-login',
-  imports: [],
+  imports: [CommonModule,FormsModule],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
 export class Login implements AfterViewInit {
+
+  userName:string = "";
+  userPassword:string = "";
+
+  constructor(
+    private modal : ModalService
+  ){}
 
   ngAfterViewInit(): void {
     particlesJS('particles-js', {
@@ -35,4 +46,13 @@ export class Login implements AfterViewInit {
     });
   }
 
+  onLogin(){
+    if(this.userName === "admin"
+      && this.userPassword === "1"
+    ){
+
+    }else{
+      this.modal.open("Wrong Password",ModalType.Error);
+    }
+  }
 }

@@ -35,7 +35,7 @@ export class About implements OnInit {
   ) { }
 
   btnClick() {
-    this.modal.open('Modal', this.message, this.selectValue);
+    this.modal.openWthTitle('Modal', this.message, this.selectValue);
   }
 
   async btnDel() {
