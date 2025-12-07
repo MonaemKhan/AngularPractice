@@ -23,4 +23,8 @@ export class SidebarService {
 
     this.isSlideOpen = !this.isSlideOpen;
   }
+
+  status() : boolean{
+    return this.isSlideOpen;
+  }
 }

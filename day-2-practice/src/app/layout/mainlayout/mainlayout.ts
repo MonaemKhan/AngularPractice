@@ -13,19 +13,21 @@ import { SidebarService } from '../../services/sidebar/sidebar.service';
 export class Mainlayout {
 
   SidebarShow = {
-    show : false
+    show: false
   }
 
   constructor(
-    private sidebarService : SidebarService
-  ) {}
+    private sidebarService: SidebarService
+  ) { }
   protected readonly title = 'day-2-practice';
 
   ngOnInit() {
-    this.sidebarService.sidebarstate.subscribe(m=>this.SidebarShow = m);
+    this.sidebarService.sidebarstate.subscribe(m => this.SidebarShow = m);
   }
 
-  hideMenu(){
-    this.sidebarService.action();
+  hideMenu() {
+    if (this.sidebarService.status()) {
+      this.sidebarService.action();
+    }
   }
 }

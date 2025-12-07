@@ -1,6 +1,6 @@
 .header-style {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   background: #0ff;
   color: #141414;
@@ -12,23 +12,8 @@
     align-items: center;
     gap: 10px;
   }
-.exploreIcon{
-  cursor: pointer;
-}
-  .heaer-route {
-    margin-right: 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 40%;
 
-    a {
-      text-decoration: none;
-      color: #141414;
-    }
-
-    a:hover {
-      color: white;
-    }
+  .exploreIcon {
+    cursor: pointer;
   }
 }
