@@ -1,0 +1,25 @@
+
+.sidebar {
+  order: 2px solid blue;
+  padding: 10px;
+  height: 78vh;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  background-color: rgb(50, 94, 94);
+  color: white;
+  position: absolute;
+
+  /* ANIMATION SETTINGS */
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 1s ease, opacity 0.35s ease;
+}
+
+/* When sidebar is visible */
+.sidebar.open {
+  transform: translateX(0);
+  opacity: 1;
+  width: fit-content;
+}
+

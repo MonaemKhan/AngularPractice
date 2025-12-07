@@ -1,0 +1,11 @@
+<div>
+  <app-hearder />
+</div>
+<div class="body-bar">
+  <div>
+    <app-sidebar [show]="SidebarShow.show"></app-sidebar>
+  </div>
+  <div class="route-outlate" (click)="hideMenu()">
+    <router-outlet />
+  </div>
+</div>
