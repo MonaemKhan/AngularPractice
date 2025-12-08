@@ -1,14 +1,23 @@
 <div class="modal-overlay" *ngIf="show">
-  <!-- *ngIf="show" -->
   <div class="modal-box" [ngClass]="type">
-    <div class="modal-title-bar">
-      <h3>{{ title }}</h3>
-      <button class="close-btn" (click)="close()">
-        <i class="bi bi-x-circle-fill" style="color: red;"></i> Close
-      </button>
+    <div class="modal-icon">
+      <i
+        class="bi"
+        [ngClass]="{
+          'bi-check-circle-fill': type === 'success',
+          'bi-exclamation-triangle-fill': type === 'warning',
+          'bi-x-circle-fill': type === 'error'
+        }"
+      ></i>
     </div>
 
-    <p>{{ message }}</p>
+    <div class="modal-content">
+      <h3>{{ title }}</h3>
+      <p>{{ message }}</p>
+    </div>
 
+    <button class="close-btn" (click)="close()">
+      <i class="bi bi-x-lg"></i>
+    </button>
   </div>
 </div>
