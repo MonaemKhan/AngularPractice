@@ -15,7 +15,7 @@ export class Hearder implements OnInit {
   isSidebarOpen: boolean = false;
   header_title: string = "MONAEM";
   @Input() Route_title: string = "";
-  index = 0;
+
 
   route_data!: routerData[];
 

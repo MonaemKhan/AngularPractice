@@ -42,12 +42,12 @@ export class SidebarService {
     {
       name: 'Others',
       routes: [{
-        path: "#",
+        path: "",
         name: "Todo",
         title: "Todo Section"
       },
       {
-        path: "#",
+        path: "",
         name: "Service",
         title: "Service Section"
       }

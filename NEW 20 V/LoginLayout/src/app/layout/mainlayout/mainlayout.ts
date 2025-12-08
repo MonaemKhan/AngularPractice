@@ -28,7 +28,7 @@ export class Mainlayout {
   constructor(
     private sidebarService: SidebarService
   ) { }
-  protected readonly title = 'day-2-practice';
+  protected readonly title = 'Login';
 
   ngOnInit() {
     this.sidebarService.sidebarstate.subscribe(m => this.SidebarShow = m);
