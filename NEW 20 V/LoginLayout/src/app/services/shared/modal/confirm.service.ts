@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { ModalType } from '../../../Class/modal';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,10 @@ export class ConfirmService {
 
   confrimState = new BehaviorSubject({
     show : false,
-    message : ""
+    message : "",
+    cancelText: "",
+    confirmText: "",
+    type: ModalType.Info
   });
 
   reslove(result:boolean){
@@ -24,12 +28,15 @@ export class ConfirmService {
     });
   }
 
-  confirm(message:string):Promise<boolean>{
+  confirm(message:string,cancelText:string = "No",confirmText:string = "Yes",type:ModalType = ModalType.Info):Promise<boolean>{
     return new Promise(reslove=>{
       this.resolver = reslove;
       this.confrimState.next({
         show : true,
-        message
+        message,
+        cancelText,
+        confirmText,
+        type
       });
     });
   }

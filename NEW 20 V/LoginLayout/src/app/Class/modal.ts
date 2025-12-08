@@ -2,5 +2,6 @@ export enum ModalType
 {
   Success = 'success',
   Error = 'error',
-  Warning = 'warning'
+  Warning = 'warning',
+  Info = 'info'
 }

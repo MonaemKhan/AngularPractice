@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ConfirmService } from '../../../services/shared/modal/confirm.service';
+import { ModalType } from '../../../Class/modal';
 
 @Component({
   selector: 'app-confirm',
@@ -11,9 +12,10 @@ import { ConfirmService } from '../../../services/shared/modal/confirm.service';
 export class Confirm {
   @Input() message: string = "";
   @Input() show: boolean = false;
+  @Input() cancelText: string = "No";
+  @Input() confirmText: string = "Yes";
+  @Input() type: ModalType = ModalType.Info
   constructor(private Confirm : ConfirmService){}
-
-  @Output() closeEvent = new EventEmitter<void>();
 
   Yes() {
     this.Confirm.reslove(true);

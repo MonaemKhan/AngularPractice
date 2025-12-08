@@ -25,7 +25,10 @@ export class App implements OnInit {
 
   confirm = {
     show: false,
-    message: ''
+    message: '',
+    cancelText: "",
+    confirmText: "",
+    type: ModalType.Info
   }
   loading = {
     show: false

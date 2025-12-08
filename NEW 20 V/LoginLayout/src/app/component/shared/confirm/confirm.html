@@ -1,11 +1,28 @@
-<div class="modal-overlay" *ngIf="show">
-  <div class="modal-box success">
+<div class="confirm-overlay" *ngIf="show">
+  <div class="confirm-box" [ngClass]="type">
+    <div class="icon-container">
+      <i
+        class="bi"
+        [ngClass]="{
+          'bi-check-circle-fill': type === 'success',
+          'bi-exclamation-triangle-fill': type === 'warning',
+          'bi-x-circle-fill': type === 'error',
+          'bi-question-circle-fill': type === 'info'
+        }"
+      ></i>
+    </div>
 
-    <h3>Confim Dialog</h3>
-    <p>{{ message }}</p>
+    <p class="confirm-message">{{ message }}</p>
 
-    <button class="close-btn" (click)="Yes()">Yes</button>
-    <button class="close-btn" (click)="No()">No</button>
-
+    <div class="button-group">
+      <button class="btn btn-cancel" (click)="No()">
+        <i class="bi bi-x-lg"></i>
+        <span>{{ cancelText }}</span>
+      </button>
+      <button class="btn btn-confirm" (click)="Yes()">
+        <i class="bi bi-check-lg"></i>
+        <span>{{ confirmText }}</span>
+      </button>
+    </div>
   </div>
 </div>
