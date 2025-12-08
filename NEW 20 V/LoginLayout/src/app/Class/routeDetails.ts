@@ -1,6 +1,7 @@
 export interface routerData{
   path:string,
-  name:string
+  name:string,
+  title:string
 }
 
 export interface routeOutlate{

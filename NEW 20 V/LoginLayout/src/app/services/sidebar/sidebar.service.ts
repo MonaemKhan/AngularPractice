@@ -1,14 +1,27 @@
 import { routeOutlate } from './../../Class/routeDetails';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SidebarService {
+  constructor(
+    private route : Router
+  ){}
   isSlideOpen: boolean = false;
   sidebarstate = new BehaviorSubject({
     show: false
+  });
+
+  isSlideRightOpen: boolean = false;
+  sidebarRightstate = new BehaviorSubject({
+    show: false
+  });
+
+  routeTitleState = new BehaviorSubject({
+    Route_title : ""
   });
 
   routeOutlateData: routeOutlate[] = [
@@ -16,11 +29,13 @@ export class SidebarService {
       name: 'Admin',
       routes: [{
         path: "",
-        name: "Home"
+        name: "Home",
+        title: ""
       },
       {
         path: "/about",
-        name: "About"
+        name: "About",
+        title: "About Section"
       }
       ]
     },
@@ -28,11 +43,13 @@ export class SidebarService {
       name: 'Others',
       routes: [{
         path: "#",
-        name: "Todo"
+        name: "Todo",
+        title: "Todo Section"
       },
       {
         path: "#",
-        name: "Service"
+        name: "Service",
+        title: "Service Section"
       }
       ]
     }
@@ -57,7 +74,39 @@ export class SidebarService {
     return this.isSlideOpen;
   }
 
+  async actionRight() :Promise<boolean>{
+    if (!this.isSlideRightOpen) {
+      this.sidebarRightstate.next({
+        show: true
+      });
+    } else {
+      this.sidebarRightstate.next({
+        show: false
+      });
+    }
+
+    this.isSlideRightOpen = !this.isSlideRightOpen;
+    return true;
+  }
+
+  statusRight(): boolean {
+    return this.isSlideRightOpen;
+  }
+
   getRouteOutlateData():routeOutlate[]{
     return this.routeOutlateData;
+  }
+
+  gotoRoute(value:string){
+    this.routeOutlateData.forEach(element => {
+      element.routes.forEach(el=>{
+        if(el.path === value){
+          this.routeTitleState.next({
+            Route_title : el.title
+          });
+        }
+      });
+    });
+    this.route.navigate([value]);
   }
 }

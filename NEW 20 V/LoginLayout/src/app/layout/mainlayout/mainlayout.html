@@ -1,9 +1,12 @@
 <div>
-  <app-hearder />
+  <app-hearder [Route_title]="RouteTitle.Route_title" />
 </div>
 <div class="body-bar">
   <div>
     <app-sidebar [show]="SidebarShow.show"></app-sidebar>
+  </div>
+  <div>
+    <app-sidebar-right [show]="SidebarRightShow.show"></app-sidebar-right>
   </div>
   <div class="route-outlate" (click)="hideMenu()">
     <router-outlet />

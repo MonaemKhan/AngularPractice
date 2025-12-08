@@ -1,6 +1,21 @@
 <div class="header-style">
-  <div class="header-title">
-    <div class="exploreIcon" (click)="exploreButtonClick()"><i class="bi bi-grid"></i></div>
-    <div><h1>{{header_title}}</h1></div>
+  <div class="header-left">
+    <div class="menu-icon" (click)="exploreButtonClick()">
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+    </div>
+    <div class="header-title">
+      <span class="title-text">{{ header_title }}</span>
+    </div>
+  </div>
+  <div>
+    <span class="title-text">{{ Route_title }}</span>
+  </div>
+  <div class="header-right">
+    <div class="user-menu-btn" (click)="toggleUserMenu()" title="Logout">
+      <i class="bi bi-box-arrow-left"></i>
+      <span class="user-menu-text">User Manual</span>
+    </div>
   </div>
 </div>

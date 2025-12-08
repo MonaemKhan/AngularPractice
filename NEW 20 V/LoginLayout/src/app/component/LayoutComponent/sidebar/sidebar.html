@@ -1,10 +1,35 @@
-<div class="sidebar" [class.open]="show">
-  <div *ngFor="let rout of routeOutlateData">
-    <div *ngIf="rout.routes.length>0" class="routeHeader">
-      <h3>{{rout.name}}</h3>
-      <p *ngFor="let item of rout.routes">
-        <a (click)="navManu(item.path)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.name}}</a>
-      </p>
+<div class="sidebar-overlay" [class.visible]="show" (click)="closeSidebar()"></div>
+    <div class="sidebar" [class.open]="show">
+      <div class="sidebar-header">
+        <h2 class="sidebar-title">Navigation</h2>
+        <div class="close-btn" (click)="closeSidebar()">
+          <i class="bi bi-x-lg"></i>
+        </div>
+      </div>
+
+      <div class="sidebar-content">
+        <div *ngFor="let rout of routeOutlateData; let i = index" class="route-section">
+          <div *ngIf="rout.routes.length > 0">
+            <div class="route-header">
+              <i class="bi bi-folder2-open"></i>
+              <h3>{{rout.name}}</h3>
+            </div>
+            <div class="route-items">
+              <a *ngFor="let item of rout.routes"
+                 (click)="navManu(item.path)"
+                 class="route-link">
+                <i class="bi bi-chevron-right"></i>
+                <span>{{item.name}}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="footer-info">
+          <i class="bi bi-info-circle"></i>
+          <span>Version 1.0.0</span>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
