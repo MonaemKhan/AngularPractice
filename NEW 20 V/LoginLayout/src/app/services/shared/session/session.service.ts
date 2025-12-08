@@ -6,11 +6,11 @@ import { Session, SessionEnum } from '../../../Class/session';
 })
 export class SessionService {
 
-  setSession(data: Session, isRemember: boolean) {
+  setSession(data: Session) {
     sessionStorage.setItem(SessionEnum.userId, data.userId);
     sessionStorage.setItem(SessionEnum.userToken, data.userToken);
     sessionStorage.setItem(SessionEnum.isRemember, data.isRemember === true ? "1" : "0");
-    if (isRemember) {
+    if (data.isRemember) {
       localStorage.setItem(SessionEnum.userId, data.userId);
       localStorage.setItem(SessionEnum.userToken, data.userToken);
       localStorage.setItem(SessionEnum.isRemember, data.isRemember === true ? "1" : "0");
@@ -40,9 +40,9 @@ export class SessionService {
 
   getSession(): Session {
     const sessionData: Session = {
-      userId: sessionStorage.getItem(SessionEnum.userId) || sessionStorage.getItem(SessionEnum.userId) || '',
-      userToken: sessionStorage.getItem(SessionEnum.userToken) || sessionStorage.getItem(SessionEnum.userId) || '',
-      isRemember: sessionStorage.getItem(SessionEnum.isRemember) === "1" ? true : false || sessionStorage.getItem(SessionEnum.isRemember) === "1" ? true : false || false
+      userId: sessionStorage.getItem(SessionEnum.userId) || localStorage.getItem(SessionEnum.userId) || '',
+      userToken: sessionStorage.getItem(SessionEnum.userToken) || localStorage.getItem(SessionEnum.userId) || '',
+      isRemember: sessionStorage.getItem(SessionEnum.isRemember) === "1" ? true : false || localStorage.getItem(SessionEnum.isRemember) === "1" ? true : false || false
     };
 
     return sessionData;

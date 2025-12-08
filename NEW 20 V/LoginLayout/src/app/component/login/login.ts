@@ -3,6 +3,8 @@ import { AfterViewInit, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ModalService } from '../../services/shared/modal/modal.service';
 import { ModalType } from '../../Class/modal';
+import { LoginServices } from '../../services/login/login.services';
+import { Router } from '@angular/router';
 
 declare var particlesJS: any;
 
@@ -16,9 +18,12 @@ export class Login implements AfterViewInit {
 
   userName:string = "";
   userPassword:string = "";
+  isRemember:boolean = false;
 
   constructor(
-    private modal : ModalService
+    private modal : ModalService,
+    private login : LoginServices,
+    private route : Router
   ){}
 
   ngAfterViewInit(): void {
@@ -46,13 +51,12 @@ export class Login implements AfterViewInit {
     });
   }
 
-  onLogin(){
-    if(this.userName === "admin"
-      && this.userPassword === "1"
-    ){
-
+  async onLogin(){
+    var errM = await this.login.doLogin(this.userName,this.userPassword,this.isRemember);
+    if(errM.length > 0){
+      this.modal.open(errM,ModalType.Error);
     }else{
-      this.modal.open("Wrong Password",ModalType.Error);
+      this.route.navigate([''])
     }
   }
 }

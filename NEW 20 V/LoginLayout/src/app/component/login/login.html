@@ -7,7 +7,7 @@
     <input type="text" placeholder="User Name" [(ngModel)]="userName"/>
     <input type="password" placeholder="Password" [(ngModel)]="userPassword" />
     <div class="RememberBox">
-      <input id="rememberCheckBox" type="checkbox" />
+      <input id="rememberCheckBox" type="checkbox" [(ngModel)]="isRemember" />
       <label for="rememberCheckBox">Remember me</label>
     </div>
     <button (click)="onLogin()">Sign In</button>
