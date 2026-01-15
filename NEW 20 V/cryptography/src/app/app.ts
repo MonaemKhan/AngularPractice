@@ -35,41 +35,6 @@ export class App implements OnInit{
     this.privateKeyLoaded = true;
   }
 
-  onPublicKeyFileSelected(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        try {
-          //console.log(e.target.result);
-          this.rsaService.loadPublicKey(e.target.result);
-          this.publicKeyLoaded = true;
-          this.showMessage('Public key loaded successfully!', 'success');
-        } catch (error) {
-          this.showMessage('Error loading public key: ' + error, 'error');
-        }
-      };
-      reader.readAsText(file);
-    }
-  }
-
-  onPrivateKeyFileSelected(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        try {
-          this.rsaService.loadPrivateKey(e.target.result);
-          this.privateKeyLoaded = true;
-          this.showMessage('Private key loaded successfully!', 'success');
-        } catch (error) {
-          this.showMessage('Error loading private key: ' + error, 'error');
-        }
-      };
-      reader.readAsText(file);
-    }
-  }
-
   encrypt() {
     if (!this.publicKeyLoaded) {
       this.showMessage('Please load a public key first!', 'error');
@@ -102,6 +67,7 @@ export class App implements OnInit{
 
     try {
       this.decryptedText = this.rsaService.decrypt(this.cipherText);
+      console.log(JSON.parse(this.decryptedText));
       this.showMessage('Text decrypted successfully!', 'success');
     } catch (error) {
       this.showMessage('Decryption error: ' + error, 'error');

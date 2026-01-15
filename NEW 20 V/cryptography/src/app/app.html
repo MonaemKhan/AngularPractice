@@ -1,31 +1,10 @@
 <div class="container">
   <header>
-    <h1>🔐 RSA Encryption Tool</h1>
-    <p>Encrypt with public.xml and decrypt with private.xml</p>
+    <h1 style="color: black;">🔐 RSA Encryption Tool</h1>
   </header>
 
   <div class="alert" *ngIf="message" [class.success]="messageType === 'success'" [class.error]="messageType === 'error'">
     {{ message }}
-  </div>
-
-  <div class="key-section">
-    <div class="key-upload">
-      <label class="file-label">
-        <input type="file" accept=".xml" (change)="onPublicKeyFileSelected($event)">
-        <span class="btn" [class.loaded]="publicKeyLoaded">
-          {{ publicKeyLoaded ? '✓ Public Key Loaded' : '📤 Load Public Key (public.xml)' }}
-        </span>
-      </label>
-    </div>
-
-    <div class="key-upload">
-      <label class="file-label">
-        <input type="file" accept=".xml" (change)="onPrivateKeyFileSelected($event)">
-        <span class="btn" [class.loaded]="privateKeyLoaded">
-          {{ privateKeyLoaded ? '✓ Private Key Loaded' : '📤 Load Private Key (private.xml)' }}
-        </span>
-      </label>
-    </div>
   </div>
 
   <div class="crypto-section">
