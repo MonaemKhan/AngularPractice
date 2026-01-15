@@ -1,0 +1,89 @@
+<div class="container">
+  <header>
+    <h1>🔐 RSA Encryption Tool</h1>
+    <p>Encrypt with public.xml and decrypt with private.xml</p>
+  </header>
+
+  <div class="alert" *ngIf="message" [class.success]="messageType === 'success'" [class.error]="messageType === 'error'">
+    {{ message }}
+  </div>
+
+  <div class="key-section">
+    <div class="key-upload">
+      <label class="file-label">
+        <input type="file" accept=".xml" (change)="onPublicKeyFileSelected($event)">
+        <span class="btn" [class.loaded]="publicKeyLoaded">
+          {{ publicKeyLoaded ? '✓ Public Key Loaded' : '📤 Load Public Key (public.xml)' }}
+        </span>
+      </label>
+    </div>
+
+    <div class="key-upload">
+      <label class="file-label">
+        <input type="file" accept=".xml" (change)="onPrivateKeyFileSelected($event)">
+        <span class="btn" [class.loaded]="privateKeyLoaded">
+          {{ privateKeyLoaded ? '✓ Private Key Loaded' : '📤 Load Private Key (private.xml)' }}
+        </span>
+      </label>
+    </div>
+  </div>
+
+  <div class="crypto-section">
+    <div class="card">
+      <h2>🔒 Encryption</h2>
+      <textarea
+        [(ngModel)]="plainText"
+        placeholder="Enter text to encrypt..."
+        rows="4"
+      ></textarea>
+
+      <div class="btn-group">
+        <button class="btn btn-primary" (click)="encrypt()" [disabled]="!publicKeyLoaded">
+          🔐 Encrypt
+        </button>
+        <button class="btn btn-secondary" (click)="clearEncryption()">
+          Clear
+        </button>
+      </div>
+
+      <div *ngIf="encryptedText" class="result">
+        <h3>Encrypted Text:</h3>
+        <div class="output-box">{{ encryptedText }}</div>
+        <div class="btn-group">
+          <button class="btn btn-sm" (click)="copyToClipboard(encryptedText)">
+            📋 Copy
+          </button>
+          <button class="btn btn-sm" (click)="useEncryptedForDecrypt()">
+            ⬇️ Use for Decryption
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🔓 Decryption</h2>
+      <textarea
+        [(ngModel)]="cipherText"
+        placeholder="Enter encrypted text (Base64)..."
+        rows="4"
+      ></textarea>
+
+      <div class="btn-group">
+        <button class="btn btn-primary" (click)="decrypt()" [disabled]="!privateKeyLoaded">
+          🔓 Decrypt
+        </button>
+        <button class="btn btn-secondary" (click)="clearDecryption()">
+          Clear
+        </button>
+      </div>
+
+      <div *ngIf="decryptedText" class="result">
+        <h3>Decrypted Text:</h3>
+        <div class="output-box success-box">{{ decryptedText }}</div>
+        <button class="btn btn-sm" (click)="copyToClipboard(decryptedText)">
+          📋 Copy
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
